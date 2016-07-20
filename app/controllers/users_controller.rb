@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_action :logon_check, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
   end
@@ -52,5 +54,11 @@ class UsersController < ApplicationController
                                   :password_confirmation, :region)
   end
   
+  def logon_check
+    
+    unless logged_in?
+      redirect_to root_path
+    end
+  end
   
 end
