@@ -37,7 +37,11 @@ class UsersController < ApplicationController
     
     if @user.update(user_params)
       # 保存に成功し  た場合はトップページへリダイレクト
-        redirect_to user_path(current_user.id) , notice: 'ユーザ情報を更新しました'
+      #  redirect_to user_path(current_user.id) , notice: 'ユーザ情報を更新しました'
+    
+      flash[:success] = "ユーザ情報を更新しました"
+      redirect_to @user
+    
     else  
         # 保存に失敗した場合は編集画面へ戻す
         render 'edit'
@@ -56,9 +60,13 @@ class UsersController < ApplicationController
   
   def logon_check
     
-    unless logged_in?
-      redirect_to root_path
-    end
+    #unless logged_in?
+    #  redirect_to root_path
+    
+    @user = User.find(params[:id])
+    redirect_to root_path if @user != current_user
+   
+    
   end
   
 end
