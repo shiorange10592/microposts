@@ -4,6 +4,7 @@
         <%= f.text_area :content, placeholder: "Compose new micropost..." %>
     </div>
     
+    
   <div class="field">
     <% if @micropost.image? %>
       <div class="thumbnail">
@@ -24,6 +25,7 @@
     <% end %>
   </div>
   <!-- 追加箇所 終了 -->
+  
   
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
