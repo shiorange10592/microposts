@@ -22,6 +22,6 @@ before_action :logged_in_user, only: [:create, :destroy]
   
   private
   def micropost_params
-    params.require(:micropost).permit(:content)
+    params.require(:micropost).permit(:content,  :image, :image_cache, :remove_image)
   end
 end

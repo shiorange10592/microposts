@@ -9,4 +9,13 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  
+  <% if micropost.image? %>
+  <p>
+    <strong>Image:</strong>
+    <div class="thumbnail">
+      <%= image_tag micropost.image.url %>
+    </div>
+  </p>
+  <% end %>
 </li>
